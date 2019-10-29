@@ -1,8 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+John Conway's Game of Life. Made with React & Redux.
 
-## Available Scripts
+## Board design
 
-In the project directory, you can run:
+Total width is not adjustable. Users can specify how many cells wide they'd like it to be, and because we're using a table of HTML elements instead of the canvas, we can simply expand to fit.
 
 ### `yarn start`
 

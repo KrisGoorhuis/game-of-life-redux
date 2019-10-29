@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-rows: 20% 50% 30%;
+  /* background-color: #282c34; */
+  background-color: var(--starlight-gray);
+  height: 100vh;
 }
 
 .App-logo {
@@ -7,8 +12,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;

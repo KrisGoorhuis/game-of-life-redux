@@ -1,0 +1,19 @@
+.table_cell {
+   border: 1px solid var(--starlight-grayblue);
+   width: 5px;
+   height: 5px;
+
+}
+
+.table_cell:hover {
+   cursor: pointer;
+   background-color: var(--starlight-green);
+}
+
+.life {
+   background-color: var(--starlight-green);
+}
+
+.empty {
+   /* background-color: white; */
+}
