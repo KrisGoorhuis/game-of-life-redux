@@ -11,6 +11,7 @@ let Board = (props) => {
       props.dispatch({type: 'GENERATE_EMPTY_ARRAY'})
       props.dispatch({type: 'RANDOMIZE_LIFE'})
 
+      console.log(props.tileDataArray)
       advanceTime()
    }
 

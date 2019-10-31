@@ -23,3 +23,10 @@
 .App-link {
   color: #09d3ac;
 }
+
+main {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  width: 1000px;
+  margin: auto; 
+}

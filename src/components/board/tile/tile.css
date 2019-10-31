@@ -1,13 +1,13 @@
 .table_cell {
    border: 1px solid var(--starlight-grayblue);
-   width: 5px;
-   height: 5px;
-
+   /* Width/height come from inline style so we can offer control to users */
+   /* width: 5px;
+   height: 5px; */
 }
 
 .table_cell:hover {
    cursor: pointer;
-   background-color: var(--starlight-green);
+   /* background-color: var(--starlight-green); */
 }
 
 .life {

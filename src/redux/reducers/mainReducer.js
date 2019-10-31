@@ -1,31 +1,37 @@
 const initialState = {
-   width: 40,
-   height: 30,
+   width: 50,
+   height: 40,
    tileDataArray: null,
-   lifeProliferation: .10,
+   lifeProliferation: 10, // percentage
    paused: false,
    turnTime: 350,
+   tileWidth: '5',
+   tileHeight: '5',
 }
 
 export default function mainReducer(state = initialState, action) {
    switch (action.type) {
       case ('SET_WIDTH'):
+         let newWidth = action.payload
+         if (isNaN(newWidth)) {
+            newWidth = state.width
+         }
+         
          return {
             ...state,
-            width: action.payload
+            width: newWidth
          }
 
       case ('SET_HEIGHT'):
+         let newHeight = action.payload
+         if (isNaN(newHeight)) {
+            newHeight = state.height
+         }
+         
          return {
             ...state,
-            height: action.payload
+            height: newHeight
          }
-
-      // case ('SET_TILE_DATA_ARRAY'):
-      //    return {
-      //       ...state,
-      //       tileDataArray: action.payload
-      //    }
 
       case ('GENERATE_EMPTY_ARRAY'):
          let emptyArray = new Array(state.width)
@@ -46,7 +52,7 @@ export default function mainReducer(state = initialState, action) {
 
          for (let x = 0; x < lifeArray.length; x++) {
             for (let y = 0; y < lifeArray[x].length; y++) {
-               let roll = Math.random()
+               let roll = Math.random()*100 // We're comparing with a percentage, so bump it up two decimals
                lifeArray[x][y] = roll > state.lifeProliferation ? {life: false} : {life: true}
             }
          }
@@ -110,9 +116,11 @@ export default function mainReducer(state = initialState, action) {
             return false
          }
 
-         for (let x = 0; x < nextArray.length; x++) {
-            for (let y = 0; y < nextArray[x].length; y++) {
-               nextArray[x][y].life = decideFate(x, y)
+         if (state.paused === false) {
+            for (let x = 0; x < nextArray.length; x++) {
+               for (let y = 0; y < nextArray[x].length; y++) {
+                  nextArray[x][y].life = decideFate(x, y)
+               }
             }
          }
 
@@ -125,6 +133,57 @@ export default function mainReducer(state = initialState, action) {
          return {
             ...state,
             paused: !state.paused
+         }
+      
+      case ('SET_LIFE_PROLIFERATION'):
+         console.log(`Setting proliferatio to ${action.payload}`)
+
+         let newProliferation = action.payload
+         if (isNaN(newProliferation)) {
+            newProliferation = state.lifeProliferation
+         }
+
+         return {
+            ...state,
+            lifeProliferation: newProliferation
+         }
+
+      case ('SET_TURN_TIME'):
+         let newTurnTime = action.payload
+         if (isNaN(newTurnTime)) {
+            newTurnTime = state.turnTime
+         }
+
+         return {
+            ...state,
+            turnTime: newTurnTime
+         }
+
+      case ('SET_TILE_WIDTH'):
+         let newTileWidth = action.payload
+         if (isNaN(newTileWidth)) {
+            newTileWidth = state.tileWidth
+         }
+         return {
+            ...state,
+            tileWidth: newTileWidth
+         }
+      
+      case ('SET_TILE_HEIGHT'):
+         let newTileHeight = action.payload
+         if (isNaN(newTileHeight)) {
+            newTileHeight = state.tileHeight
+         }
+         
+         return {
+            ...state,
+            tileHeight: newTileHeight
+         }
+      
+      case ('RESET_BOARD'):
+
+         return {
+            ...initialState
          }
          
       default:
