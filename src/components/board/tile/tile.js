@@ -12,11 +12,45 @@ let Tile = (props) => {
       height: props.tileHeight + "px",
    }
 
+   let classList = "table_cell" // Watch for spaces in added classes
+
+   if (props.life) {
+      classList += " life" // SPAAACE
+      
+      // Only add age classes if the tile contains life
+      if (props.age === 1) {
+         classList += " juvenile"
+      }
+      if (props.age === 2) {
+         classList += " adolescent"
+      }
+      if (props.age >= 3) {
+         classList += " adult"
+      }
+
+      // This switch caused the page to hang. Why?
+      // switch (props.age) {
+      //    case 0:
+      //       classList += " juvenile"
+      //       return
+      //    case 1: 
+      //       classList += " adolescent"
+      //       return
+      //    case 2: 
+      //       classList += " adult"
+      //       return
+      //    default:
+      //       return
+      // }
+   }
+   
+
+
    return (
       <td 
          style={tileStyle}
          onClick={ () => { props.toggleLife() } }
-         className={ props.life ? "table_cell life" : "table_cell empty"}
+         className={classList}
       >
          {/* ... */}
       </td>

@@ -2,11 +2,12 @@ const initialState = {
    width: 50,
    height: 40,
    tileDataArray: null,
-   lifeProliferation: 10, // percentage
+   lifeProliferation: 15, // percentage
    paused: false,
    turnTime: 350,
    tileWidth: '5',
    tileHeight: '5',
+   generation: 0,
 }
 
 export default function mainReducer(state = initialState, action) {
@@ -54,6 +55,7 @@ export default function mainReducer(state = initialState, action) {
             for (let y = 0; y < lifeArray[x].length; y++) {
                let roll = Math.random()*100 // We're comparing with a percentage, so bump it up two decimals
                lifeArray[x][y] = roll > state.lifeProliferation ? {life: false} : {life: true}
+               lifeArray[x][y].age = 0
             }
          }
 
@@ -74,6 +76,7 @@ export default function mainReducer(state = initialState, action) {
 
          function decideFate(x, y) {
             let neighbors = 0
+
 
             // Determine the number of neighbors
             for (let i = x - 1; i <= x + 1; i++) {
@@ -120,13 +123,20 @@ export default function mainReducer(state = initialState, action) {
             for (let x = 0; x < nextArray.length; x++) {
                for (let y = 0; y < nextArray[x].length; y++) {
                   nextArray[x][y].life = decideFate(x, y)
+                  if (nextArray[x][y].life === true) {
+                     nextArray[x][y].age ++
+                  } else {
+                     nextArray[x][y].age = 0
+                  }
                }
             }
          }
 
+         console.log(state.generation)
          return {
             ...state,
-            tileDataArray: nextArray
+            tileDataArray: nextArray,
+            generation: state.generation + 1
          }
 
       case ('TOGGLE_PAUSE'):

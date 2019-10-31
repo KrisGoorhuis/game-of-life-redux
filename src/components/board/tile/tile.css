@@ -10,10 +10,26 @@
    /* background-color: var(--starlight-green); */
 }
 
-.life {
+.life_new {
    background-color: var(--starlight-green);
+}
+
+.life_old {
+   background-color: var(--starlight-blue);
 }
 
 .empty {
    /* background-color: white; */
+}
+
+.juvenile {
+   background-color: var(--starlight-green);
+}
+
+.adolescent {
+   background-color: var(--starlight-teal);
+}
+
+.adult {
+   background-color: var(--starlight-blue)
 }

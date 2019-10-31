@@ -10,7 +10,20 @@ let Controls = (props) => {
     }
   
    function reset() {
+      console.log("props before")
+      console.log(props)
       props.dispatch({type: 'RESET_BOARD'})
+      console.log("props after")
+      console.log(props)
+
+
+      document.querySelector('#tiles_wide').value = props.width
+      document.querySelector('#tiles_high').value = props.height
+      document.querySelector('#life_proliferation').value = props.lifeProliferation
+      document.querySelector('#turn_time').value = props.turnTime
+      document.querySelector('#tile_width').value = props.tileWidth
+      document.querySelector('#tile_height').value = props.tileHeight
+
       restartGame()
    }
 
@@ -38,8 +51,6 @@ let Controls = (props) => {
       props.dispatch({type: 'TOGGLE_PAUSE'})
    }
 
-console.log(props)
-
 
    return (
       <div id="controls_container">
@@ -61,7 +72,8 @@ console.log(props)
             />
          </label>
 
-         <label> Life proliferation (%): 
+         <label> 
+            Life proliferation (%):
             <input 
                type="number" 
                className="input_field" 
@@ -97,17 +109,31 @@ console.log(props)
             />
          </label>
 
-         <button id="pause_button" onClick={togglePause}>
-            {props.paused ? "Resume" : "Pause"}
-         </button>
+         <div id="buttons_container">
+            <button 
+               id="pause_button" 
+               onClick={togglePause}
+               className="controls_button"
+            >
+               {props.paused ? "Resume" : "Pause"}
+            </button>
 
-         <button id="generate_button" onClick={generate}>
-            Generate
-         </button>
+            <button 
+               id="generate_button" 
+               onClick={generate}
+               className="controls_button"
+            >
+               Generate
+            </button>
 
-         <button id="reset_button" onClick={reset}>
-            Reset
-         </button>
+            <button 
+               id="reset_button" 
+               onClick={reset}
+               className="controls_button"
+            >
+               Reset
+            </button>
+         </div>
 
           {/* Extreme values may do weird things. Not necessarily in a good way. */}
       </div>
@@ -122,7 +148,7 @@ let mapStateToProps = (state) => {
       paused: state.mainReducer.paused,
       turnTime: state.mainReducer.turnTime,
       tileWidth: state.mainReducer.tileWidth,
-      tileHeight: state.mainReducer.tileHeight
+      tileHeight: state.mainReducer.tileHeight,
    }
 }
 

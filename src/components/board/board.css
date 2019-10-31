@@ -16,3 +16,62 @@
    display: flex;
    flex-direction: column;
 }
+
+#info_box {
+   display: flex;
+   flex-direction: row;
+   width: 500px;
+   justify-content: space-around;
+   margin-bottom: 10px;
+}
+
+#age_info_box {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+#age_info_details {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+}
+
+#age_info_details p {
+   line-height: 14px;
+   font-size: 20px;
+}
+
+.age_info_listing {
+   width: 5px;
+   height: 5px;
+   border: 1px solid var(--starlight-grayblue);
+   padding: 1px;
+   margin: 3px;
+   margin-bottom: 0px;
+}
+
+#age_info_juvenile {
+   background-color: var(--starlight-green)
+}
+
+#age_info_adolescent {
+   background-color: var(--starlight-teal)
+}
+
+#age_info_adult {
+   background-color: var(--starlight-blue)
+}
+
+#info_box h5 {
+   margin: 0px;
+}
+
+#info_box h6 {
+   margin: 0px;
+}
+
+#info_box p {
+   margin: 0px;
+}

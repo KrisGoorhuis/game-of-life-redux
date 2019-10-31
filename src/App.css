@@ -24,9 +24,15 @@
   color: #09d3ac;
 }
 
+#lifespan {
+  color: var(--stardust-green)
+}
+
 main {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 70% 30%;
   width: 1000px;
+  height: 500px;  
   margin: auto; 
+  align-items: center;
 }
