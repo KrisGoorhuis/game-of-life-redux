@@ -37,8 +37,7 @@ html {
 main {
   padding: 5px;
   padding-top: 15px;
-  background: linear-gradient(var(--starlight-teal), var(--starlight-gray) 98%);
-  /* background: var(--starlight-teal); */
+  background: var(--starlight-teal);
 } 
 
 #main_subcontainer {
@@ -64,7 +63,10 @@ main {
     height: auto;
   }
   .App-header {
-    height: 100px;
+    height: 70px;
+  }
+  main {
+    background: linear-gradient(var(--starlight-teal), var(--starlight-gray) 98%);
   }
 }
 
