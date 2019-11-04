@@ -56,3 +56,13 @@ input::placeholder {
 .controls_button:hover {
    cursor: pointer;
 }
+
+@media screen and (max-width: 900px) {
+   #controls_container {
+      flex-direction: column-reverse;
+   }
+   #buttons_container {
+      margin-top: 0px;
+      margin-bottom: 5px;
+   }
+}

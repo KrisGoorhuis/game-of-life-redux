@@ -47,12 +47,11 @@ let Board = (props) => {
       // This JSON hack unfortunately seems to be the easiest way to create a full copy
       // rather than an array of references. Boo.
       let newTileDataArray = JSON.parse(JSON.stringify(props.tileDataArray));
-      console.log(newTileDataArray[x][y].life)
+
       newTileDataArray[x][y].life = !newTileDataArray[x][y].life
-      console.log(newTileDataArray[x][y].life)
+      newTileDataArray[x][y].age ++
 
-
-      console.log("Toggle life")
+      console.log(`Creating life at [${x}, ${y}]`)
       
       props.dispatch({type: 'TOGGLE_LIFE', payload: newTileDataArray})
    }

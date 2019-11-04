@@ -161,7 +161,7 @@ export default function mainReducer(state = initialState, action) {
 
       case ('SET_TURN_TIME'):
          let newTurnTime = action.payload
-         console.log(newTurnTime)
+         
          if (isNaN(newTurnTime)) {
             newTurnTime = state.turnTime
          }

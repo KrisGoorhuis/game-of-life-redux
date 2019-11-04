@@ -101,7 +101,7 @@ let Controls = (props) => {
             />
          </label>
 
-         <label> Tile width (relative units):
+         <label> Tile height (relative units):
             <input 
                type="number" 
                className="input_field" 
