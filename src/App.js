@@ -19,8 +19,10 @@ function App(props) {
         </header>
 
         <main>
-          <Board />
-          <Controls />
+          <div id="main_subcontainer">
+            <Board />
+            <Controls />
+          </div>
         </main>
 
         <footer>

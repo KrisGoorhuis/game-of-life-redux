@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './board.css'
 import { connect } from 'react-redux'
 
@@ -6,6 +6,13 @@ import Tile from './tile/tile.js'
 
 
 let Board = (props) => {
+   // How I think this setTimeout solution goes:
+   // setTimeout creates its own closure, so we can't nicely update the turn time field within.
+   // useRef sticks a reference to something outside the closure in there instead of its enclosed variable.
+   // The reference lets us give turn time control to users via the normal Redux store updates
+   let turnTimeRef = useRef(props.turnTime)
+   turnTimeRef.current = props.turnTime
+   
 
    function startGame() {
       props.dispatch({type: 'GENERATE_EMPTY_ARRAY'})
@@ -19,7 +26,7 @@ let Board = (props) => {
 
       setTimeout( () => {
          advanceTime()
-      }, props.turnTime)
+      }, turnTimeRef.current)
    }
 
    useEffect( () => {
@@ -28,7 +35,7 @@ let Board = (props) => {
       // Moving the function definition in here. Missing dep: props. It suggests destructuring outside.
       // Destructure outside. Missing dep: all of the destructured things.
       // So here it stays and ignored goes the warning.
-      if (window.screen.width < 600) {
+      if (window.screen.availWidth < 600) {
          // If we're on a phone, start a slim board instead.
          props.dispatch({type: 'SET_WIDTH', payload: 25})
       }

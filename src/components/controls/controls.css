@@ -1,11 +1,14 @@
 #controls_container {
    display: flex;
    flex-direction: column;
-   background-color: var(--starlight-blue);
+   background-color: var(--starlight-grayblue);
+   color: white;
    box-shadow: -4px 2px 10px rgba(0, 0, 0, .5);
    border-radius: 5px;
    padding: 10px;
    font-size: 16px;
+   margin-bottom: 15px;
+
 }
 
 #controls_container h5 {
@@ -23,19 +26,28 @@
 
 .input_field {
    width: 50px;
+   background-color: var(--starlight-blue)
 }
 
 input::placeholder {
    padding-left: 3px;
 }
 
+
 #buttons_container {
    display: flex;
    justify-content: space-between;
    padding: 10px;
+   margin-top: 15px;
 }
 
 .controls_button {
    width: 80px;
    border-radius: 5px;
+   color: white;
+   background-color: var(--starlight-grayblue)
+}
+
+.controls_button:hover {
+   cursor: pointer;
 }

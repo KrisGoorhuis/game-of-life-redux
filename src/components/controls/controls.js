@@ -7,6 +7,8 @@ let Controls = (props) => {
    function restartGame() {
       props.dispatch({type: 'GENERATE_EMPTY_ARRAY'})
       props.dispatch({type: 'RANDOMIZE_LIFE'})
+
+
     }
   
    function reset() {
@@ -29,6 +31,8 @@ let Controls = (props) => {
    }
 
    let generate = () => {
+      reset()
+
       // These can pass NaN. The reducer will check for those.
       props.dispatch({type: 'SET_WIDTH', payload: getVal('#tiles_wide')})
       props.dispatch({type: 'SET_HEIGHT', payload: getVal('#tiles_high')})
@@ -50,7 +54,7 @@ let Controls = (props) => {
 
    return (
       <div id="controls_container">
-         <h5>Extreme values make cause some weird behavior.</h5>
+         <h5>Extreme values make cause weird behavior.</h5>
          <label> Tiles wide: 
             <input 
                type="number" 
@@ -88,7 +92,7 @@ let Controls = (props) => {
             />
          </label>
 
-         <label> Tile width (em - ):
+         <label> Tile width (relative units):
             <input 
                type="number" 
                className="input_field" 
@@ -97,7 +101,7 @@ let Controls = (props) => {
             />
          </label>
 
-         <label> Tile height (pixels):
+         <label> Tile width (relative units):
             <input 
                type="number" 
                className="input_field" 

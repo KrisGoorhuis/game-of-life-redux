@@ -148,9 +148,8 @@ export default function mainReducer(state = initialState, action) {
          }
       
       case ('SET_LIFE_PROLIFERATION'):
-         console.log(`Setting proliferatio to ${action.payload}`)
-
          let newProliferation = action.payload
+
          if (isNaN(newProliferation)) {
             newProliferation = state.lifeProliferation
          }
@@ -162,6 +161,7 @@ export default function mainReducer(state = initialState, action) {
 
       case ('SET_TURN_TIME'):
          let newTurnTime = action.payload
+         console.log(newTurnTime)
          if (isNaN(newTurnTime)) {
             newTurnTime = state.turnTime
          }
@@ -193,9 +193,14 @@ export default function mainReducer(state = initialState, action) {
          }
       
       case ('RESET_BOARD'):
+         let newState = {...initialState}
+
+         if (window.screen.availWidth < 600) {
+            newState.width = 25
+         }
 
          return {
-            ...initialState
+            ...newState
          }
          
       default:

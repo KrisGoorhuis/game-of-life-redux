@@ -1,7 +1,12 @@
+
+html {
+  min-height: 100vh;
+}
+
 .App {
   text-align: center;
   display: grid;
-  grid-template-rows: 20% 50% 30%;
+  grid-template-rows: 25% 50% 25%;
   /* background-color: #282c34; */
   background-color: var(--starlight-gray);
   height: 100vh;
@@ -30,20 +35,44 @@
 }
 
 main {
+  padding: 5px;
+  padding-top: 15px;
+  background: var(--starlight-teal);
+}
+
+#main_subcontainer {
   display: grid;
   grid-template-columns: 70% 30%;
   max-width: 1000px;
   width: 100%;
-  height: 500px;  
+  /* height: 500px;   */
   margin: auto; 
   align-items: center;
   font-size: 10px;
 }
 
 @media screen and (max-width: 900px) {
-  main {
+  #main_subcontainer {
     display: flex;
     flex-direction: column;
     font-size: 8px;
   }
+  .App {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+
+
+/* Hides number roll buttons in input fields. */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }
