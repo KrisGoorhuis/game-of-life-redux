@@ -58,10 +58,6 @@ let Board = (props) => {
 
    return (
       <div id="board_main">
-      {
-         props.tileDataArray === null ? // This will attempt to render before useEffect makes the call to generate. Give 'em a sec.
-         <p>Generating...</p>
-         :
          <div id="board_container">
             <div id="info_box">
                <div id="age_info_container">
@@ -80,6 +76,11 @@ let Board = (props) => {
             </div>   
             </div>
             <table> 
+
+               {
+               props.tileDataArray === null ? // This will attempt to render before useEffect makes the call to generate. Give 'em a sec.
+               <p id="generating_message">Creating life...</p>
+               :
                <tbody id="table_body">
                   { props.tileDataArray.map( (row, x) =>
                         <tr className="table_row" key={x}>
@@ -94,9 +95,10 @@ let Board = (props) => {
                         </tr>
                      ) }
                </tbody>
+               }
             </table>
          </div>
-      }     
+        
       </div>
    )
 }

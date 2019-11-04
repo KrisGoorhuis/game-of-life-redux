@@ -25,6 +25,13 @@ table {
    background-color: var(--starlight-gray)
 }
 
+#generating_message {
+   min-width: 300px;
+   min-height: 300px;
+   color: white;
+   font-size: 16px;
+}
+
 #table_body {
    display: flex;
    flex-direction: row;
