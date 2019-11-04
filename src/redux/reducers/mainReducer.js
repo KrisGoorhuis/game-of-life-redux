@@ -1,12 +1,12 @@
 const initialState = {
-   width: 50,
-   height: 40,
+   width: 40,
+   height: 30,
    tileDataArray: null,
    lifeProliferation: 15, // percentage
    paused: false,
    turnTime: 350,
-   tileWidth: '5',
-   tileHeight: '5',
+   tileWidth: '1',
+   tileHeight: '1',
    generation: 0,
 }
 
@@ -73,6 +73,7 @@ export default function mainReducer(state = initialState, action) {
       case ('ADVANCE_TIME'):
          // See line 41. 
          let nextArray = JSON.parse(JSON.stringify(state.tileDataArray))
+         let nextGeneration = state.generation
 
          function decideFate(x, y) {
             let neighbors = 0
@@ -120,6 +121,8 @@ export default function mainReducer(state = initialState, action) {
          }
 
          if (state.paused === false) {
+            nextGeneration ++
+
             for (let x = 0; x < nextArray.length; x++) {
                for (let y = 0; y < nextArray[x].length; y++) {
                   nextArray[x][y].life = decideFate(x, y)
@@ -132,11 +135,10 @@ export default function mainReducer(state = initialState, action) {
             }
          }
 
-         console.log(state.generation)
          return {
             ...state,
             tileDataArray: nextArray,
-            generation: state.generation + 1
+            generation: nextGeneration
          }
 
       case ('TOGGLE_PAUSE'):

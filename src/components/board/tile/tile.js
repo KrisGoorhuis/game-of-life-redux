@@ -8,8 +8,10 @@ let Tile = (props) => {
    // our toggleLife onClick is passed from board so we can more simply set coordinates there.
 
    let tileStyle = {
-      width: props.tileWidth + "px",
-      height: props.tileHeight + "px",
+      width: props.tileWidth + "em",
+      height: props.tileHeight + "em",
+      // width: '100%',
+      // height: '100%',
    }
 
    let classList = "table_cell" // Watch for spaces in added classes

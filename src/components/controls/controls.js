@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './controls.css'
 import { connect } from 'react-redux'
 
@@ -10,32 +10,25 @@ let Controls = (props) => {
     }
   
    function reset() {
-      console.log("props before")
-      console.log(props)
+      // Control fields will reset in useEffect. Otherwise we update with old values.
       props.dispatch({type: 'RESET_BOARD'})
-      console.log("props after")
-      console.log(props)
+      restartGame()
+   }
 
-
+   function resetControls() {
       document.querySelector('#tiles_wide').value = props.width
       document.querySelector('#tiles_high').value = props.height
       document.querySelector('#life_proliferation').value = props.lifeProliferation
       document.querySelector('#turn_time').value = props.turnTime
       document.querySelector('#tile_width').value = props.tileWidth
       document.querySelector('#tile_height').value = props.tileHeight
-
-      restartGame()
    }
 
    let getVal = (query) => {
-      console.log(document.querySelector(query).value)
       return parseInt(document.querySelector(query).value)
    }
 
    let generate = () => {
-      console.log("Generate")
-      console.log(getVal('#tiles_high'))
-
       // These can pass NaN. The reducer will check for those.
       props.dispatch({type: 'SET_WIDTH', payload: getVal('#tiles_wide')})
       props.dispatch({type: 'SET_HEIGHT', payload: getVal('#tiles_high')})
@@ -51,9 +44,13 @@ let Controls = (props) => {
       props.dispatch({type: 'TOGGLE_PAUSE'})
    }
 
+   useEffect(() => {
+      resetControls()
+   })
 
    return (
       <div id="controls_container">
+         <h5>Extreme values make cause some weird behavior.</h5>
          <label> Tiles wide: 
             <input 
                type="number" 
@@ -91,7 +88,7 @@ let Controls = (props) => {
             />
          </label>
 
-         <label> Tile width (pixels):
+         <label> Tile width (em - ):
             <input 
                type="number" 
                className="input_field" 

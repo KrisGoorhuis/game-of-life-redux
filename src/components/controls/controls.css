@@ -1,10 +1,15 @@
 #controls_container {
    display: flex;
    flex-direction: column;
-   background-color: var(--starlight-grayblue);
+   background-color: var(--starlight-blue);
    box-shadow: -4px 2px 10px rgba(0, 0, 0, .5);
    border-radius: 5px;
-   
+   padding: 10px;
+   font-size: 16px;
+}
+
+#controls_container h5 {
+   color: white;
 }
 
 #controls_container label {
@@ -32,4 +37,5 @@ input::placeholder {
 
 .controls_button {
    width: 80px;
+   border-radius: 5px;
 }

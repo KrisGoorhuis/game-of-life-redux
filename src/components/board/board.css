@@ -1,13 +1,32 @@
-#table_container {
+
+
+#board_main {
    width: 100%;
    display: flex;
    justify-content: center;
 }
 
+#board_container {
+   padding: 10px;
+   box-shadow: -4px 2px 10px 2px rgba(0, 0, 0, .5);
+   border-radius: 5px;
+   display: flex;
+   flex-direction: column;
+   padding-bottom: 30px;
+   background: var(--starlight-teal);
+}
+
+table {
+   padding: 10px;
+   box-shadow: -1px 2px 8px 0px rgba(0, 0, 0, .5);
+   border-radius: 5px;
+   background-color: var(--starlight-gray)
+}
+
 #table_body {
    display: flex;
    flex-direction: row;
-   width: 600px;
+   /* width: 600px; */
    height: 100%;
    justify-content: center;
 }
@@ -20,9 +39,11 @@
 #info_box {
    display: flex;
    flex-direction: row;
-   width: 500px;
    justify-content: space-around;
    margin-bottom: 10px;
+   /* padding-top: 20px;
+   padding-bottom: 0px; */
+   font-size: 16px;
 }
 
 #age_info_box {
@@ -31,11 +52,16 @@
    justify-content: center;
 }
 
+#age_info_container {
+   color: white;
+}
+
 #age_info_details {
    display: flex;
    flex-direction: row;
    align-items: center;
    justify-content: center;
+   height: 25px;
 }
 
 #age_info_details p {
@@ -44,8 +70,8 @@
 }
 
 .age_info_listing {
-   width: 5px;
-   height: 5px;
+   width: 8px;
+   height: 8px;
    border: 1px solid var(--starlight-grayblue);
    padding: 1px;
    margin: 3px;
@@ -74,4 +100,15 @@
 
 #info_box p {
    margin: 0px;
+}
+
+#generation_container {
+   display: flex;
+   flex-direction: column;
+   height: 25px;
+   color: white;
+}
+
+#generation_container h6 {
+   font-size: 14px;
 }

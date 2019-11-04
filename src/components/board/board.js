@@ -11,7 +11,6 @@ let Board = (props) => {
       props.dispatch({type: 'GENERATE_EMPTY_ARRAY'})
       props.dispatch({type: 'RANDOMIZE_LIFE'})
 
-      console.log(props.tileDataArray)
       advanceTime()
    }
 
@@ -29,7 +28,10 @@ let Board = (props) => {
       // Moving the function definition in here. Missing dep: props. It suggests destructuring outside.
       // Destructure outside. Missing dep: all of the destructured things.
       // So here it stays and ignored goes the warning.
-
+      if (window.screen.width < 600) {
+         // If we're on a phone, start a slim board instead.
+         props.dispatch({type: 'SET_WIDTH', payload: 25})
+      }
       startGame()
    }, [])
    
@@ -38,20 +40,23 @@ let Board = (props) => {
       // This JSON hack unfortunately seems to be the easiest way to create a full copy
       // rather than an array of references. Boo.
       let newTileDataArray = JSON.parse(JSON.stringify(props.tileDataArray));
+      console.log(newTileDataArray[x][y].life)
       newTileDataArray[x][y].life = !newTileDataArray[x][y].life
+      console.log(newTileDataArray[x][y].life)
+
+
+      console.log("Toggle life")
       
       props.dispatch({type: 'TOGGLE_LIFE', payload: newTileDataArray})
    }
 
-   console.log(props)
    return (
-      <div id="table_container">
+      <div id="board_main">
       {
          props.tileDataArray === null ? // This will attempt to render before useEffect makes the call to generate. Give 'em a sec.
          <p>Generating...</p>
          :
-         <div>
-
+         <div id="board_container">
             <div id="info_box">
                <div id="age_info_container">
                   <h5>Age</h5>
@@ -63,7 +68,10 @@ let Board = (props) => {
                      <p>+</p>
                   </div>
                </div>
-            <h6>`Generation {props.generation}`</h6>
+            <div id="generation_container">
+               <h6>Generation</h6>
+               <p>{props.generation}</p>
+            </div>   
             </div>
             <table> 
                <tbody id="table_body">
@@ -93,7 +101,7 @@ let mapStateToProps = (state) => {
       height: state.mainReducer.height,
       tileDataArray: state.mainReducer.tileDataArray,
       turnTime: state.mainReducer.turnTime,
-      generation: state.generation,
+      generation: state.mainReducer.generation,
    }
 }
 
