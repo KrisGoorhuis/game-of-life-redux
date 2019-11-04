@@ -3,9 +3,10 @@ import './header.css'
 
 let Header = () => {
    return (
-      <React.Fragment>
+      <div id="header_container">
          <h1>THE GAME OF <span id="lifespan">LIFE</span></h1>
-      </React.Fragment>
+         <h6>by Kris Goorhuis</h6>
+      </div>
    )
 }
 

@@ -1,0 +1,10 @@
+#header_container h1 {
+   margin: 0px;
+}
+
+#header_container h6 {
+   margin: 0px;
+   color: white;
+   font-size: 14px;
+   letter-spacing: 1px;
+}

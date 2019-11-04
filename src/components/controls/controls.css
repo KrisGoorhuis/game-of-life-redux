@@ -29,8 +29,13 @@
    background-color: var(--starlight-blue)
 }
 
+input {
+   padding-left: 3px;
+}
+
 input::placeholder {
    padding-left: 3px;
+   color: rgba(0, 0, 0, .4)
 }
 
 
