@@ -76,7 +76,6 @@ let Board = (props) => {
             </div>   
             </div>
             <table> 
-
                {
                props.tileDataArray === null ? // This will attempt to render before useEffect makes the call to generate. Give 'em a sec.
                <p id="generating_message">Creating life...</p>

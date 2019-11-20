@@ -20,4 +20,4 @@ Translation of game rules into program logic. Makes use of loops set (and legibl
 Rerenders are expensive. Making each cell a React component simplified a number of things, but detecting mouse coordinates on a `<canvas>` element and translating that into the 2D array it's built on would probably be quicker. But would it be worth losing the tiles as nice, neat little elements?
 
 ### Lessons learned
-`useRef()` is a wonderful friend. Using it to update things in what's normally setTimeout's closure is such a neat trick - one I'm certain I'll find a use for again.
+`useRef()` is a wonderful friend. Using it to update things in what's normally within setTimeout's closure is such a neat trick - one I'm certain I'll find a use for again.
