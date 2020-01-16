@@ -21,3 +21,5 @@ Rerenders are expensive. Making each cell a React component simplified a number 
 
 ### Lessons learned
 `useRef()` is a wonderful friend. Using it to update things in what's normally within setTimeout's closure is such a neat trick - one I'm certain I'll find a use for again.
+
+`parseInt()` doesn't work with decimals. In retrospect, I should have recognized this immediately. Luckily we have `parseFloat()` for decimals!

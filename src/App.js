@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import { Provider, connect } from 'react-redux'
+import { Provider } from 'react-redux'
 
 import store from './redux/store.js'
 import Header from 'components/header/header.js'
 import Board from 'components/board/board.js'
 import Controls from 'components/controls/controls.js'
-import Footer from 'components/footer/footer.js'
 
 
 function App(props) {
@@ -24,10 +23,6 @@ function App(props) {
             <Controls />
           </div>
         </main>
-
-        <footer>
-          <Footer />
-        </footer>
       </div>
     </Provider>
   );

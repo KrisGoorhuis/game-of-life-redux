@@ -7,12 +7,11 @@ let Controls = (props) => {
    function restartGame() {
       props.dispatch({type: 'GENERATE_EMPTY_ARRAY'})
       props.dispatch({type: 'RANDOMIZE_LIFE'})
-
-
     }
   
    function reset() {
       // Control fields will reset in useEffect. Otherwise we update with old values.
+      // This is a separate function from restartGame() so our reducer can revert to our initialState. restartGame() doesn't do that.
       props.dispatch({type: 'RESET_BOARD'})
       restartGame()
    }
@@ -27,10 +26,11 @@ let Controls = (props) => {
    }
 
    let getVal = (query) => {
-      return parseInt(document.querySelector(query).value)
+      return parseFloat(document.querySelector(query).value)
    }
 
    let generate = () => {
+      // Instead of writing additional code to set our timer to 0, we can reuse reset().
       reset()
 
       // These can pass NaN. The reducer will check for those.
@@ -52,6 +52,8 @@ let Controls = (props) => {
       resetControls()
    })
 
+
+   
    return (
       <div id="controls_container">
          <h5>Extreme values may cause weird behavior.</h5>

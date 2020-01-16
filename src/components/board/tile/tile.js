@@ -10,8 +10,6 @@ let Tile = (props) => {
    let tileStyle = {
       width: props.tileWidth + "em",
       height: props.tileHeight + "em",
-      // width: '100%',
-      // height: '100%',
    }
 
    let classList = "table_cell" // Watch for spaces in added classes
@@ -29,21 +27,6 @@ let Tile = (props) => {
       if (props.age >= 3) {
          classList += " adult"
       }
-
-      // This switch caused the page to hang. Why?
-      // switch (props.age) {
-      //    case 0:
-      //       classList += " juvenile"
-      //       return
-      //    case 1: 
-      //       classList += " adolescent"
-      //       return
-      //    case 2: 
-      //       classList += " adult"
-      //       return
-      //    default:
-      //       return
-      // }
    }
    
 
@@ -65,5 +48,5 @@ let mapStateToProps = (state) => {
       tileHeight: state.mainReducer.tileHeight
    }
 }
- 
+
 export default connect(mapStateToProps)(Tile)
