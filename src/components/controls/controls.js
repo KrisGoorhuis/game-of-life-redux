@@ -54,7 +54,7 @@ let Controls = (props) => {
 
    return (
       <div id="controls_container">
-         <h5>Extreme values make cause weird behavior.</h5>
+         <h5>Extreme values may cause weird behavior.</h5>
          <label> Tiles wide: 
             <input 
                type="number" 
@@ -135,8 +135,6 @@ let Controls = (props) => {
                Reset
             </button>
          </div>
-
-          {/* Extreme values may do weird things. Not necessarily in a good way. */}
       </div>
    )
 }
